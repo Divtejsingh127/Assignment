@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 
 namespace Assignment
 {
@@ -18,32 +17,75 @@ namespace Assignment
             Health = 5;
         }
 
-        public void SimulateTimePassing()
+        public void Feed()
         {
-            // Simulate the passage of time
-            while (true)
+            Hunger -= 2;
+            if (Hunger < 0)
             {
-                Thread.Sleep(5000); // Simulate an hour of time passing (in milliseconds)
-                Hunger++;
-                Happiness--;
-                // You can add more time-based changes here
+                Hunger = 0;
+            }
+            Health++;
+        }
+
+        public void Play()
+        {
+            if (Hunger < 5)
+            {
+                Console.WriteLine("I'm too hungry to play!");
+            }
+            else
+            {
+                Happiness += 3;
+                if (Happiness > 10)
+                {
+                    Happiness = 10;
+                }
+                Hunger += 2;
+                if (Hunger > 10)
+                {
+                    Hunger = 10;
+                }
             }
         }
 
-        // Other methods such as Feed, Play, Rest, DisplayStats, and StatusCheck can be included as in the previous examples
+        public void Rest()
+        {
+            if (Hunger < 3)
+            {
+                Console.WriteLine("I'm too hungry to rest!");
+            }
+            else
+            {
+                Health += 2;
+                if (Health > 10)
+                {
+                    Health = 10;
+                }
+                Hunger++;
+            }
+        }
+
+        public void DisplayStats()
+        {
+            Console.WriteLine("Pet's Stats:");
+            Console.WriteLine("Hunger: " + Hunger);
+            Console.WriteLine("Happiness: " + Happiness);
+            Console.WriteLine("Health: " + Health);
+        }
     }
 
     class Program
     {
         static void Main()
         {
-            VirtualPet pet = new VirtualPet(" ");
+            VirtualPet pet = new VirtualPet("Fido");
 
-            // Start simulating time-based changes in a separate thread
-            Thread timeThread = new Thread(pet.SimulateTimePassing);
-            timeThread.Start();
+            // Interact with the pet
+            pet.Feed();
+            pet.Play();
 
-            // The rest of the program logic for user interaction and caring for the pet can be added here
+            // Display pet's stats
+            pet.DisplayStats();
         }
     }
 }
