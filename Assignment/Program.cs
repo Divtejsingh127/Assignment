@@ -10,7 +10,7 @@ namespace VirtualPet
 
             Console.WriteLine("Choose a pet type (cat, dog, rabbit): ");
             string petType = Console.ReadLine();
-            Console.WriteLine("Enter a name for your pet: ");
+            Console.WriteLine("Enter a name of  pet: ");
             string petName = Console.ReadLine();
 
             Pet myPet = new Pet(petType, petName);
