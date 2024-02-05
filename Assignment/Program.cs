@@ -1,45 +1,49 @@
 ﻿using System;
+using System.Threading;
 
 namespace Assignment
 {
-    record VirtualPet(string Name, int Hunger, int Happiness, int Health)
+    class VirtualPet
     {
-        public VirtualPet(string name) : this(name, 5, 5, 5)
+        public string Name { get; set; }
+        public int Hunger { get; set; }
+        public int Happiness { get; set; }
+        public int Health { get; set; }
+
+        public VirtualPet(string name)
         {
+            Name = name;
+            Hunger = 5;
+            Happiness = 5;
+            Health = 5;
         }
 
-        public void DisplayStats()
+        public void SimulateTimePassing()
         {
-            Console.WriteLine("Pet's Stats:");
-            Console.WriteLine("Hunger: " + Hunger);
-            Console.WriteLine("Happiness: " + Happiness);
-            Console.WriteLine("Health: " + Health);
+            // Simulate the passage of time
+            while (true)
+            {
+                Thread.Sleep(5000); // Simulate an hour of time passing (in milliseconds)
+                Hunger++;
+                Happiness--;
+                // You can add more time-based changes here
+            }
         }
 
-        public void StatusCheck()
-        {
-            if (Hunger <= 2 || Hunger >= 8)
-            {
-                Console.WriteLine("Warning: Pet's hunger is critically low or high!");
-            }
-            if (Happiness <= 2 || Happiness >= 8)
-            {
-                Console.WriteLine("Warning: Pet's happiness is critically low or high!");
-            }
-            if (Health <= 2 || Health >= 8)
-            {
-                Console.WriteLine("Warning: Pet's health is critically low or high!");
-            }
-        }
+        // Other methods such as Feed, Play, Rest, DisplayStats, and StatusCheck can be included as in the previous examples
     }
 
     class Program
     {
         static void Main()
         {
-            VirtualPet pet = new VirtualPet("Fido");
-            pet.DisplayStats();
-            pet.StatusCheck();
+            VirtualPet pet = new VirtualPet(" ");
+
+            // Start simulating time-based changes in a separate thread
+            Thread timeThread = new Thread(pet.SimulateTimePassing);
+            timeThread.Start();
+
+            // The rest of the program logic for user interaction and caring for the pet can be added here
         }
     }
 }
