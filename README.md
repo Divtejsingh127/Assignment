@@ -1,0 +1,5 @@
+Project description-Link - https://youtu.be/-FgQhdTE6Cs?si=d9ju8qOVxywQ43s0 .This is the screen recording of the petgame in which pet is created and after that pet care options are added like feeding, playing ,resting 
+Each action is modified and shows  the pet's stats accordingly and display a message.There is Pet Status Monitoring also in which Track and display pet’s stats: hunger, happiness, and health, each on a scale of 1
+to 10 also mplement a status check that warns the user if any stat is critically low or high. The time-Based Changes are also done in which it shows the passage of time, where each action represents the passing of an
+hour.Hunger increases over time, and happiness decreases slightly, prompting regular interaction.The last step is Enhanced Interaction Logic in which implement consequences for neglect, such as health deterioration if the pet is
+too hungry or unhappy and Include special messages or events based on the pet's status (e.g., the pet refusing to play if too hungry).
